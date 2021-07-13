@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Sneaker List</h1>
+    {% for sneaker in sneakers %}
+        <div class="card">
+        <div class="card-content">
+            <span class="card-title">{{ sneaker.brand }} {{ sneaker.model }}</span>
+            <p>Colorway: {{ sneaker.colorway }}</p>
+            <p>Year: {{ sneaker.year }}</p>
+        </div>
+        </div>
+  {% endfor %}
+
+{% endblock %}
