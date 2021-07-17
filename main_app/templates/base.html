@@ -14,7 +14,7 @@
 
 <body>
     <header class='navbar-fixed'>
-        <nav class='nav-wrappr'>
+        <nav class='black nav-wrappr'>
             <ul>
                 <li>
                     <a class="left brand-logo" href="{% url 'home' %}">Sneakerhead</a>
@@ -27,6 +27,9 @@
                 <li>
                     <a href="{% url 'index' %}">All Sneakers</a>
                 </li>
+                <li>
+                    <a href="{% url 'sneakers_create' %}">Add a Sneaker</a>
+                </li>
             </ul>
         </nav>
     </header>
@@ -34,7 +37,7 @@
         {% block content %}
         {% endblock %}
     </main>
-    <footer class=" page-footer">
+    <footer class="black page-footer">
         <div>All Rights Reserved, &copy; 2021 Sneakerhead</div>
         </footer>
 </body>

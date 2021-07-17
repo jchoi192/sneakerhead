@@ -7,7 +7,7 @@
 {% for sneaker in sneakers %}
 {% if sneaker.brand == 'Adidas' %}
 <div class="card">
-    <a href="{ url 'detail' sneaker.id}}">
+    <a href="{% url 'detail' sneaker.id %}">
         <div class="card-content">
             <span class="card-title">{{ sneaker.brand }} {{ sneaker.model }}</span>
             <p>Colorway: {{ sneaker.colorway }}</p>
@@ -20,9 +20,9 @@
 
 <h3>Air Jordan</h3>
 {% for sneaker in sneakers %}
-{% if sneaker.brand == 'Air Jordan' %}
+{% if sneaker.brand == 'Jordan' %}
 <div class="card">
-    <a href="{ url 'detail' sneaker.id}}">
+    <a href="{% url 'detail' sneaker.id %}">
         <div class="card-content">
             <span class="card-title">{{ sneaker.brand }} {{ sneaker.model }}</span>
             <p>Colorway: {{ sneaker.colorway }}</p>
@@ -37,7 +37,7 @@
 {% for sneaker in sneakers %}
 {% if sneaker.brand == 'New Balance' %}
 <div class="card">
-    <a href="{ url 'detail' sneaker.id}}">
+    <a href="{% url 'detail' sneaker.id %}">
         <div class="card-content">
             <span class="card-title">{{ sneaker.brand }} {{ sneaker.model }}</span>
             <p>Colorway: {{ sneaker.colorway }}</p>
@@ -52,7 +52,7 @@
 {% for sneaker in sneakers %}
 {% if sneaker.brand == 'Nike' %}
 <div class="card">
-    <a href="{ url 'detail' sneaker.id}}">
+    <a href="{% url 'detail' sneaker.id %}">
         <div class="card-content">
             <span class="card-title">{{ sneaker.brand }} {{ sneaker.model }}</span>
             <p>Colorway: {{ sneaker.colorway }}</p>
