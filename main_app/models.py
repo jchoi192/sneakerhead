@@ -23,14 +23,17 @@ class Cleaning(models.Model):
         ('T', 'Tongue')
     )
 
-    date = models.DateField()
+    date = models.DateField('Cleaned on: ')
     area = models.CharField(
         max_length=2, 
         choices=AREAS, 
         default=AREAS[0][0]
     )
-    
+
     sneaker = models.ForeignKey(Sneaker, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.get_area_display()} on {self.date}'
+
+    class Meta:
+        ordering = ['-date']

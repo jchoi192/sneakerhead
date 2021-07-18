@@ -1,6 +1,7 @@
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Sneaker
+from .forms import CleaningForm
 
 # Create your views here.
 def home(req):
@@ -15,7 +16,19 @@ def sneakers_index(req):
 
 def sneakers_detail(req, sneaker_id):
     sneaker = Sneaker.objects.get(id=sneaker_id)
-    return render(req, 'sneakers/detail.html', {'sneaker': sneaker})
+    cleaning_form = CleaningForm()
+    return render(req, 'sneakers/detail.html', {
+        'sneaker': sneaker, 
+        'cleaning_form': cleaning_form
+    })
+
+def add_cleaning(req, sneaker_id):
+    form = CleaningForm(req.POST)
+    if form.is_valid():
+        new_cleaning = form.save(commit=False)
+        new_cleaning.sneaker_id = sneaker_id
+        new_cleaning.save()
+    return redirect('detail', sneaker_id=sneaker_id)
 
 class SneakerCreate(CreateView):
     model = Sneaker
