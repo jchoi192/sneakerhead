@@ -2,6 +2,12 @@
 
 {% block content %}
 
+{% if object %}
+    <h1><span class="teal-text">{{ object.brand }}</span></h1>
+{% else %}
+    <h1>Create Sneaker</h1>
+{% endif %}
+
 <form action="" method="POST">
     {% csrf_token %}
     <table>

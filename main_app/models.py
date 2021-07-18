@@ -13,3 +13,24 @@ class Sneaker(models.Model):
     
     def get_absolute_url(self):
         return reverse('detail', kwargs={'sneaker_id': self.id})
+
+class Cleaning(models.Model):
+    AREAS = (
+        ('IS', 'Inner Sole'),
+        ('MS', 'Mid Sole'),
+        ('OS', 'Outer Sole'),
+        ('L', 'Laces'),
+        ('T', 'Tongue')
+    )
+
+    date = models.DateField()
+    area = models.CharField(
+        max_length=2, 
+        choices=AREAS, 
+        default=AREAS[0][0]
+    )
+    
+    sneaker = models.ForeignKey(Sneaker, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.get_area_display()} on {self.date}'
