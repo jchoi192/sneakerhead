@@ -11,4 +11,11 @@ urlpatterns = [
     path('sneakers/<int:pk>update/', views.SneakerUpdate.as_view(), name='sneakers_update'),
     path('sneakers/<int:pk>delete/', views.SneakerDelete.as_view(), name='sneakers_delete'),
     
+    path('accessories/', views.accessories_index, name='accessories_index'),
+    path('accessories/<int:accessory_id>/', views.accessories_detail, name='accessories_detail'),
+    path('accessories/create/', views.AccessoryCreate.as_view(), name='accessories_create'),
+    # path('accessories/<int:pk>update/', views.AccessoryUpdate.as_view(), name='accessories_update'),
+    # path('accessories/<int:pk>delete/', views.AccessoryDelete.as_view(), name='accessories_delete'),
+
+    
 ]

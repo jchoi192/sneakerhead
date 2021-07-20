@@ -1,6 +1,6 @@
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.shortcuts import render, redirect
-from .models import Sneaker
+from .models import Sneaker, Accessory
 from .forms import CleaningForm
 
 # Create your views here.
@@ -41,3 +41,15 @@ class SneakerUpdate(UpdateView):
 class SneakerDelete(DeleteView):
     model = Sneaker
     success_url = '/sneakers/'
+
+def accessories_index(req):
+    accessories = Accessory.objects.all()
+    return render(req, 'accessories/index.html', {'accessories': accessories})
+
+def accessories_detail(req, accessory_id):
+    accessory = Accessory.objects.get(id=accessory_id)
+    return render(req, 'accessories/detail.html', {'accessory': accessory})
+
+class AccessoryCreate(CreateView):
+    model = Accessory
+    fields = '__all__'
