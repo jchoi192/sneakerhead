@@ -17,9 +17,11 @@ def sneakers_index(req):
 def sneakers_detail(req, sneaker_id):
     sneaker = Sneaker.objects.get(id=sneaker_id)
     cleaning_form = CleaningForm()
+    accessories_sneaker_doesnt_have = Accessory.objects.exclude(id__in = sneaker.accessories.all().values_list('id'))
     return render(req, 'sneakers/detail.html', {
         'sneaker': sneaker, 
-        'cleaning_form': cleaning_form
+        'cleaning_form': cleaning_form,
+        'accessories': accessories_sneaker_doesnt_have
     })
 
 def add_cleaning(req, sneaker_id):
@@ -62,3 +64,6 @@ class AccessoryDelete(DeleteView):
     model = Accessory
     success_url = '/accessories/'
 
+def assoc_accessory(req, sneaker_id, accessory_id):
+    Sneaker.objects.get(id=sneaker_id).accessories.add(accessory_id)
+    return redirect('detail', sneaker_id=sneaker_id)

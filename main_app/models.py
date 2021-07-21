@@ -2,11 +2,23 @@ from django.db import models
 from django.urls import reverse
 
 # Create your models here.
+class Accessory(models.Model):
+    type = models.CharField(max_length=50)
+    color = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f'{self.color} {self.type}'
+    
+    def get_absolute_url(self):
+        return reverse('accessories_detail', kwargs={ 'accessory_id': self.id })
+
+
 class Sneaker(models.Model):
     brand = models.CharField(max_length=100)
     model = models.CharField(max_length=100)
     colorway = models.CharField(max_length=100)
     year = models.IntegerField()
+    accessories = models.ManyToManyField(Accessory)
 
     def __str__(self):
         return f'{self.brand} {self.model} {self.colorway} {self.year}'
@@ -37,10 +49,3 @@ class Cleaning(models.Model):
 
     class Meta:
         ordering = ['-date']
-
-class Accessory(models.Model):
-    type = models.CharField(max_length=50)
-    color = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.name
