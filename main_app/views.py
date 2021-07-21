@@ -53,3 +53,12 @@ def accessories_detail(req, accessory_id):
 class AccessoryCreate(CreateView):
     model = Accessory
     fields = '__all__'
+
+class AccessoryUpdate(UpdateView):
+    model = Accessory
+    fields = ['type', 'color']
+
+class AccessoryDelete(DeleteView):
+    model = Accessory
+    success_url = '/accessories/'
+

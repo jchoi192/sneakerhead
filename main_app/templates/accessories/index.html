@@ -6,7 +6,7 @@
 {% for accessory in accessories %}
 
 <div class="card">
-    <a href="{% url 'accessories_detail' accesory.id %}">
+    <a href="{% url 'accessories_detail' accessory.id %}">
         <div class="card-content">
             <span class="card-title">{{ accessory.type }} </span>
             <p>Color: {{ accessory.color }}</p>
